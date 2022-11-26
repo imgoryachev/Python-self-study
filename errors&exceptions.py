@@ -14,7 +14,6 @@ print("End of program")
 
 
 
-
 try:
     number = int(input("Enter number: "))
     print("Entered number:", number)
