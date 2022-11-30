@@ -114,3 +114,79 @@ print(people)
 
 people.sort(key=str.lower)
 print(people)
+
+# Min Max
+numbers = [9, 21, 12, 1, 3, 15, 18]
+print(min(numbers))     # 1
+print(max(numbers))     # 21
+
+# Copying lists
+# Shallow copy. Change one of lists - change another
+people1 = ["Tom", "Bob", "Alice"]
+people2 = people1
+people2.append("Sam")
+print(people1)   # ["Tom", "Bob", "Alice", "Sam"]
+print(people2)   # ["Tom", "Bob", "Alice", "Sam"]
+
+# Deep copy
+people1 = ["Tom", "Bob", "Alice"]
+people2 = people1.copy()
+people2.append("Sam")
+# people1 и people2 match different lists
+print(people1)   # ["Tom", "Bob", "Alice"]
+print(people2)   # ["Tom", "Bob", "Alice", "Sam"]
+
+# Copying part of list
+people = ["Tom", "Bob", "Alice", "Sam", "Tim", "Bill"]
+ 
+slice_people1 = people[:3]   # 0 to 3
+print(slice_people1)   # ["Tom", "Bob", "Alice"]
+ 
+slice_people2 = people[1:3]   # 1 to 3
+print(slice_people2)   # ["Bob", "Alice"]
+ 
+slice_people3 = people[1:6:2]   # 1 to 6 step 2
+print(slice_people3)   # ["Bob", "Sam", "Bill"]
+
+# Sum lists
+people1 = ["Tom", "Bob", "Alice"]
+people2 = ["Tom", "Sam", "Tim", "Bill"]
+people3 = people1 + people2
+print(people3)
+
+# List of lists
+people = [
+    ["Tom", 29],
+    ["Alice", 33],
+    ["Bob", 27]
+]
+person = list()
+person.append("Bill")
+person.append(41)
+
+people.append(person)
+
+print(people[-1])
+
+people[-1].append("+7898445355")
+
+print(people[-1])
+
+people[-1].pop()
+print(people[-1])
+
+people.pop(-1)
+
+people[0] = ["Sam", 18]
+print(people)
+
+# list by cycle
+people = [
+    ["Tom", 29],
+    ["Alice", 33],
+    ["Bob", 27]
+]
+ 
+for person in people:
+    for item in person:
+        print(item, end=" | ")
