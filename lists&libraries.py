@@ -190,3 +190,45 @@ people = [
 for person in people:
     for item in person:
         print(item, end=" | ")
+
+# Tuple (Kortezh) there is no changable
+
+tom = "Tom", 23
+print(tom)
+
+tom = ("Tom",)
+print(tom)
+
+# tuple from list
+data = ["Tom", 37, "Google"]
+tom = tuple(data)
+print(tom)
+
+name, age, company, position = ("Tom", 37, "Google", "software developer")
+print(name)         
+print(age)          
+print(position)     
+print(company)
+
+def get_user():
+    name = "Tom"
+    age = 22
+    company = "Google"
+    return name, age, company
+
+user = get_user()
+print(user)
+
+tom = ("Tom", 22, "Google")
+for item in tom:
+    print(item)
+
+# Ranges
+
+for i in range(5):
+    print(i, end=" ")
+
+for i in range(1, 10):
+    for j in range(1, 10):
+        print(i * j, end="\t")
+    print("\n")
