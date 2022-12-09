@@ -232,3 +232,176 @@ for i in range(1, 10):
     for j in range(1, 10):
         print(i * j, end="\t")
     print("\n")
+
+# dictionary
+
+users = {1: "Tom", 2: "Bob", 3: "Bill"}
+objects = {1: "Tom", "2": True, 3: 100.6}
+objects = {}
+objects = dict()
+
+users_list = [
+    ["+111123455", "Tom"],
+    ["+384767557", "Bob"],
+    ["+958758767", "Alice"]
+]
+users_dict = dict(users_list)
+print(users_dict)
+
+users_tuple = (
+    ("+111123455", "Tom"),
+    ("+384767557", "Bob"),
+    ("+958758767", "Alice")
+)
+users_dict = dict(users_tuple)
+print(users_dict)
+
+users = {
+    "+11111111": "Tom",
+    "+33333333": "Bob",
+    "+55555555": "Alice"
+}
+
+print(users["+11111111"])
+
+key = "+4444444"
+if key in users:
+    user = users[key]
+    print(user)
+else:
+    print("Элемент не найден")
+
+
+users = {
+    "+11111111": "Tom",
+    "+33333333": "Bob",
+    "+55555555": "Alice"
+}
+ 
+user1 = users.get("+55555555")
+print(user1)
+
+# Removing
+users = {
+    "+11111111": "Tom",
+    "+33333333": "Bob",
+    "+55555555": "Alice"
+}
+ 
+del users["+55555555"] # Removing
+user = users.pop(key) # Removing
+
+# Copying dictionares
+# Copy to new dict
+users = {"+1111111": "Tom", "+3333333": "Bob", "+5555555": "Alice"}
+students = users.copy()
+print(students)
+
+# Merges to  dicts
+users = {"+1111111": "Tom", "+3333333": "Bob"}
+ 
+users2 = {"+2222222": "Sam", "+6666666": "Kate"}
+users.update(users2)
+ 
+print(users)
+print(users2)
+
+# search
+users = {
+    "+11111111": "Tom",
+    "+33333333": "Bob",
+    "+55555555": "Alice"
+}
+for key in users:
+    print(f"Phone: {key}  User: {users[key]} ")
+    
+for key, value in users.items():
+    print(f"Phone: {key}  User: {value} ")
+
+for key in users.keys():
+    print(key)
+
+for value in users.values():
+    print(value)
+
+# Complex dicts
+
+users = {
+    "Tom": {
+        "phone": "+971478745",
+        "email": "tom12@gmail.com"
+    },
+    "Bob": {
+        "phone": "+876390444",
+        "email": "bob@gmail.com",
+        "skype": "bob123"
+    }
+}
+
+old_email = users["Tom"]["email"]
+users["Tom"]["email"] = "supertom@gmail.com"
+print(users["Tom"])
+
+key = "skype"
+if key in users["Tom"]:
+    print(users["Tom"]["skype"])
+else:
+    print("skype is not found")
+
+# Set
+
+users = {"Tom", "Bob", "Alice", "Tom"}
+print(users)    # {"Alice", "Bob", "Tom"}
+
+people = ["Mike", "Bill", "Ted"]
+users = set(people)
+print(users)
+
+users = set()
+users.add("Sam")
+print(users)
+
+users = {"Tom", "Bob", "Alice"}
+ 
+user = "Tom"
+if user in users: 
+    users.remove(user)
+print(users)
+
+
+users = {"Tom", "Bob", "Alice"}
+users2 = {"Sam", "Kate", "Bob"}
+ 
+users3 = users.union(users2)
+print(users3) # {"Bob", "Alice", "Sam", "Kate", "Tom"}
+
+
+users = {"Tom", "Bob", "Alice"}
+users2 = {"Sam", "Kate", "Bob"}
+ 
+users3 = users.intersection(users2)
+print(users3) # {"Bob"}
+
+
+users = {"Tom", "Bob", "Alice"}
+users2 = {"Sam", "Kate", "Bob"}
+ 
+users3 = users.symmetric_difference(users2)
+print(users3)   # {"Tom", "Alice", "Sam", "Kate"}
+
+
+users = {"Tom", "Bob", "Alice"}
+superusers = {"Sam", "Tom", "Bob", "Alice", "Greg"}
+ 
+print(users.issubset(superusers))   # True
+print(superusers.issubset(users))   # False
+
+
+users = {"Tom", "Bob", "Alice"}
+superusers = {"Sam", "Tom", "Bob", "Alice", "Greg"}
+ 
+print(users.issuperset(superusers))   # False
+print(superusers.issuperset(users))   # True
+
+	
+users = frozenset({"Tom", "Bob", "Alice"})
