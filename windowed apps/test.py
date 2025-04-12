@@ -1,34 +1,27 @@
 import tkinter as tk
-import random
 
 # Создаем главное окно
 root = tk.Tk()
-root.title("Убегающая кнопка")
-root.geometry("500x400")
+root.title("Многострочное текстовое поле с прокруткой")
+root.geometry("400x300")
 
-# Функция для перемещения кнопки
-def move_button(event=None):
-    # Генерируем случайные координаты relx и rely
-    new_relx = random.uniform(0.1, 0.9)  # От 10% до 90% ширины окна
-    new_rely = random.uniform(0.1, 0.9)  # От 10% до 90% высоты окна
-    
-    # Перемещаем кнопку
-    button.place(relx=new_relx, rely=new_rely, anchor="center")
+# Создаем многострочное текстовое поле
+textbox = tk.Text(root, font=("Arial", 14), width=30, height=5)
+textbox.pack(side=tk.LEFT, padx=10, pady=10)
 
-# Создаем кнопку
-button = tk.Button(
-    root,
-    text="Поймай меня!",
-    font=("Arial", 16),
-    fg="white",
-    bg="red",
-    command=lambda: print("Это невозможно! :)")
-)
+# Создаем полосу прокрутки
+scrollbar = tk.Scrollbar(root, command=textbox.yview)
+scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-# Размещаем кнопку по центру
-button.place(relx=0.5, rely=0.5, anchor="center")
+# Привязываем полосу прокрутки к текстовому полю
+textbox.config(yscrollcommand=scrollbar.set)
 
-# Привязываем событие <Enter> к функции move_button
-button.bind("<Enter>", move_button)
+# Добавляем кнопку для получения текста из поля
+def get_text():
+    content = textbox.get("1.0", tk.END)  # Получаем текст из текстового поля
+    print(f"Вы ввели:\n{content}")
+
+button = tk.Button(root, text="Получить текст", font=("Arial", 12), command=get_text)
+button.pack(pady=10)
 
 root.mainloop()

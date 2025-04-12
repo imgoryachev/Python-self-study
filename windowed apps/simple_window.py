@@ -72,7 +72,7 @@ button2.place(relx=0.9, rely=0.9, relwidth=0.1, relheight=0.05, anchor="center")
 def move_button(event=None):
     new_relx = random.uniform(0.1, 0.9)
     new_rely = random.uniform(0.1, 0.9)
-    dodge_button.place(relx=new_relx, rely=new_rely, relwidth=0.2, relheight=0.1, anchor="center")
+    dodge_button.place(relx=new_relx, rely=new_rely, relwidth=0.1, relheight=0.05, anchor="center")
 
 dodge_button = tk.Button(
     root,
@@ -80,14 +80,43 @@ dodge_button = tk.Button(
     command=lambda: print("THATS IMPOSSIBLE!"),
     font=(font_size)
 )
-dodge_button.place(relx=0.5, rely=0.3, relwidth=0.2, relheight=0.1, anchor="center")
+dodge_button.place(relx=0.5, rely=0.2, relwidth=0.1, relheight=0.05, anchor="center")
 dodge_button.bind("<Enter>", move_button)
+
+# Create frame for textbox and label bundle and staying together
+frame=tk.Frame(root)
+frame.place(relx=0.5, rely=0.3, anchor="center")
+
+# Create label for textbox
+label1=tk.Label(frame,text="Enter text",font=(14))
+label1.pack()
+
+# Create textbox
+textbox = tk.Entry(frame, font=("Arial", 20))
+#textbox.place(relx=0.5, rely=0.3, anchor="center")
+textbox.pack(side=(tk.LEFT))
+
+# Entry input processing function
+def process_input():
+    user_input = textbox.get()
+    print(user_input)
+    textbox.delete(0, tk.END)
+
+entry_Button=tk.Button(
+    frame,
+    text="Enter",
+    font=(14),
+    width=12,
+    command=process_input
+)
+#entry_Button.place(relx=0.5, rely=0.35, anchor="center")
+entry_Button.pack(side=tk.LEFT, padx=15)
 
 # Create lable
 label = tk.Label(root, text=font_size)
-label1 = tk.Label(root, text=window_widht)
+label2 = tk.Label(root, text=window_widht)
 label.pack()
-label1.pack()
+label2.pack()
 
 # Run window
 root.mainloop()
